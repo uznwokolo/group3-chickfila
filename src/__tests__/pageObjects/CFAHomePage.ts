@@ -14,9 +14,18 @@ export class CFAHomePage extends BasePage {
     orderFoodBtn: By = By.xpath('//a[@href="/order"]');
     searchBtn: By = By.css('.icon-search-off');
     searchField: By = By.id('keyword');
+    searchClose: By = By.css('.icon-close');
 
     constructor(driver: WebDriver) {
         super(driver);
-        //driver.maxWindow();
+    }
+
+    /**
+     * This method searches for an item on the homepage
+     * @param value - search term
+     */
+    async doSearch(value:string) {
+        await this.click(this.searchBtn);
+        await this.sendKeys(this.searchField, `${value}\n`);
     }
 }

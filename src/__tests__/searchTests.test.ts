@@ -19,21 +19,19 @@ describe("Testing the Search feature...", () => {
         await home.maxWindow();
     });
     test("User can search for nutritional facts", async () => {
-        //let nutr: string = "nutrition";
-        //let result: By = By.xpath('//span[contains(text(),"Nutrition and Allergens")]');
-        await home.click(home.searchBtn);
-        await home.sendKeys(home.searchField, `${searchTerms[0]}\n`);
+        await home.doSearch(searchTerms[0])
         await home.checkIfVisible(searchRes[0]);
         expect(await home.getText(searchRes[0])).toContain("Nutrition and Allergens");
     });
     test("User can search for gift cards", async () => {
-        await home.click(home.searchBtn);
-        await home.sendKeys(home.searchField, `${searchTerms[1]}\n`);
+        await home.doSearch(searchTerms[1])
         await home.checkIfVisible(searchRes[1]);
         expect(await home.getText(searchRes[1])).toContain("gift cards");
     });
-    /*
-    test("", async () => {});
+    test("User can cancel a search", async () => {
+        await home.click(home.searchBtn);
+        await home.click(home.searchClose);
+    });/*
     test("", async () => {});*/
     afterAll(async () => {
         await home.quit();
