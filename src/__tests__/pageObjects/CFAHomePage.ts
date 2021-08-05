@@ -17,5 +17,6 @@ export class CFAHomePage extends BasePage {
 
     constructor(driver: WebDriver) {
         super(driver);
+        //driver.maxWindow();
     }
 }
