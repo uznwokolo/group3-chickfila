@@ -103,9 +103,12 @@ export class BasePage {
      * This method returns true if a web element is displayed and usable
      */
     async isElementOnscreen(locator: By) {
-        if (await this.driver.wait(until.elementIsEnabled(await this.driver.findElement(locator)))) {
-            return true;
-        } else {
+        try {
+            if (await this.driver.wait(until.elementIsEnabled(await this.driver.findElement(locator)))) {
+                return true;
+            }
+        }
+        catch (e: any) {
             return false;
         }
     }

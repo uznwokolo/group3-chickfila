@@ -17,13 +17,16 @@ describe("Testing the Search feature...", () => {
     beforeAll(async () => {
         await home.navigate(home.url);
         await home.maxWindow();
+        if (home.isElementOnscreen(home.searchClose)) {
+            home.click(home.searchClose);
+        }
     });
-    test("User can search for nutritional facts", async () => {
+    test.skip("User can search for nutritional facts", async () => {
         await home.doSearch(searchTerms[0])
         await home.checkIfVisible(searchRes[0]);
         expect(await home.getText(searchRes[0])).toContain("Nutrition and Allergens");
     });
-    test("User can search for gift cards", async () => {
+    test.skip("User can search for gift cards", async () => {
         await home.doSearch(searchTerms[1])
         await home.checkIfVisible(searchRes[1]);
         expect(await home.getText(searchRes[1])).toContain("gift cards");
@@ -31,6 +34,7 @@ describe("Testing the Search feature...", () => {
     test("User can cancel a search", async () => {
         await home.click(home.searchBtn);
         await home.click(home.searchClose);
+        expect(await home.isElementOnscreen(home.searchField)).not.toBe(true);
     });/*
     test("", async () => {});*/
     afterAll(async () => {
