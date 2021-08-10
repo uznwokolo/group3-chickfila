@@ -18,17 +18,20 @@ describe("Testing the Search feature...", () => {
         await home.navigate(home.url);
         await home.maxWindow();
     });
-    test("User can search for nutritional facts", async () => {
+    test("To check the website", async () => {
+        expect(await home.driver.getCurrentUrl()).toBe(home.url);
+    })
+    test.skip("User can search for nutritional facts", async () => {
         await home.doSearch(searchTerms[0])
         await home.checkIfVisible(searchRes[0]);
         expect(await home.getText(searchRes[0])).toContain("Nutrition and Allergens");
     });
-    test("User can search for gift cards", async () => {
+    test.skip("User can search for gift cards", async () => {
         await home.doSearch(searchTerms[1])
         await home.checkIfVisible(searchRes[1]);
         expect(await home.getText(searchRes[1])).toContain("gift cards");
     });
-    test("User can cancel a search", async () => {
+    test.skip("User can cancel a search", async () => {
         await home.click(home.searchBtn);
         await home.click(home.searchClose);
     });/*
