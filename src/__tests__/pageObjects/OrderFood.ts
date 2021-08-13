@@ -56,7 +56,6 @@ export class OrderFood extends BasePage {
 
     async pickUpDriveThru(zipCodeOrAddr:string){
         await this.click(this.doPickup);
-        await this.clearInput(this.pickupAddr);
         await this.sendKeys(this.pickupAddr, zipCodeOrAddr);
         await this.click(this.findRestaurants);
         await this.click(this.selectRestaurant);
@@ -64,7 +63,6 @@ export class OrderFood extends BasePage {
     }
     async pickUpCarryOut(zipCodeOrAddr:string){
         await this.click(this.doPickup);
-        await this.clearInput(this.pickupAddr);
         await this.sendKeys(this.pickupAddr, zipCodeOrAddr);
         await this.click(this.findRestaurants);
         await this.click(this.selectRestaurant);
@@ -72,7 +70,6 @@ export class OrderFood extends BasePage {
     }
     async pickUpCurbside(zipCodeOrAddr:string){
         await this.click(this.doPickup);
-        await this.clearInput(this.pickupAddr);
         await this.sendKeys(this.pickupAddr, zipCodeOrAddr);
         await this.click(this.findRestaurants);
         await this.click(this.selectRestaurant);
@@ -80,7 +77,6 @@ export class OrderFood extends BasePage {
     }
     async pickUpDineIn(zipCodeOrAddr:string){
         await this.click(this.doPickup);
-        await this.clearInput(this.pickupAddr);
         await this.sendKeys(this.pickupAddr, zipCodeOrAddr);
         await this.click(this.findRestaurants);
         await this.click(this.selectRestaurant);
