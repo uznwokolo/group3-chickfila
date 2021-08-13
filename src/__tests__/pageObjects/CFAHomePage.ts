@@ -24,8 +24,9 @@ export class CFAHomePage extends BasePage {
      * This method searches for an item on the homepage
      * @param value - search term
      */
-    async doSearch(value:string) {
+    async doSearch(value: string) {
         await this.click(this.searchBtn);
         await this.sendKeys(this.searchField, `${value}\n`);
     }
+
 }

@@ -1,4 +1,4 @@
-import { By, until, WebDriver } from "selenium-webdriver";
+import { By, until, WebDriver, Key } from "selenium-webdriver";
 
 
 export class BasePage {
@@ -20,6 +20,17 @@ export class BasePage {
         await this.driver.get(url);
     }
 
+    async clearInput(locator: By) {
+        await this.driver.wait(until.elementLocated(locator));
+        let text = await this.getText(locator);
+        if (text.length > 0) {
+            var i:number;
+            for(i=0; i>text.length; i++){
+                await this.driver.findElement(locator).sendKeys(Key.BACK_SPACE);
+            }
+        }
+    }
+
     /**
      * This method will fill in input elements with text
      * @param locator - the position of the web element
@@ -37,7 +48,8 @@ export class BasePage {
      * @returns 
      */
     async click(locator: By) {
-        await this.driver.wait(until.elementLocated(locator));
+        let btn = await this.driver.wait(until.elementLocated(locator));
+        await this.driver.wait(until.elementIsEnabled(btn));
         return (await this.driver.findElement(locator)).click();
     }
 
